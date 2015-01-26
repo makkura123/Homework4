@@ -5,6 +5,7 @@
  */
 package restaurantreviewer;
 
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -23,4 +24,19 @@ public class ReviewCollection {
     public int size(){
        return restaurants.size();
     }
+    
+    public void saveFile(Restaurants r){
+        try {
+            File f = new File("C:\\Users\\Neele\\Documents\\GitHub\\Homework4\\restaurants.txt");
+            String _all = r.getName() + " " + r.getAddress() + " " + r.getReview();
+            BufferedWriter wrtr = new BufferedWriter(new FileWriter(f));
+                wrtr.append(_all);
+                wrtr.append(System.getProperty("line.separator"));
+                wrtr.close();
+            }
+         catch (Exception ex) {
+            System.out.println("I was hoping that we wouldn't get here.");
+        }
+    }
+    
 }

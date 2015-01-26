@@ -11,6 +11,7 @@ package restaurantreviewer;
  */
 public class Restaurants extends ReviewCollection {
     private String _name, _address, _review;
+    private int _rating;
     
     public Restaurants(){};
     
@@ -36,6 +37,14 @@ public class Restaurants extends ReviewCollection {
     
     public String getReview(){
         return _review;
+    }
+    
+    public void setRating(int rating){
+        _rating = rating;
+    }
+    
+    public int getRating(){
+        return _rating;
     }
     
     

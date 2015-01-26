@@ -5,6 +5,12 @@
  */
 package restaurantreviewer;
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -15,6 +21,8 @@ public class Reviewer extends javax.swing.JFrame{
 
     ReviewCollection collection = new ReviewCollection();
     Restaurants rest = new Restaurants();
+    ImageIcon star1 = new ImageIcon();
+    ImageIcon star2 = new ImageIcon();
     
     /**
      * Creates new form Reviewer
@@ -42,6 +50,8 @@ public class Reviewer extends javax.swing.JFrame{
         jTextField4 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jSlider1 = new javax.swing.JSlider();
         jFrame2 = new javax.swing.JFrame();
         jButton5 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -91,6 +101,16 @@ public class Reviewer extends javax.swing.JFrame{
             }
         });
         jFrame1.getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(241, 238, -1, -1));
+
+        jLabel2.setText("Rating");
+        jFrame1.getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
+
+        jSlider1.setMajorTickSpacing(1);
+        jSlider1.setMaximum(5);
+        jSlider1.setMinimum(1);
+        jSlider1.setPaintLabels(true);
+        jSlider1.setPaintTicks(true);
+        jFrame1.getContentPane().add(jSlider1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
 
         jButton5.setText("See Reviews");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +218,9 @@ public class Reviewer extends javax.swing.JFrame{
         rest.setName(jTextField3.getText());
         rest.setAddress(jTextField4.getText());
         rest.setReview(jTextArea2.getText());
+        rest.setRating(jSlider1.getValue());
         collection.addRestaurant(rest);
+        collection.saveFile(rest);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
@@ -208,13 +230,16 @@ public class Reviewer extends javax.swing.JFrame{
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i <= collection.size(); i++){
-         String f = String.format("Name: %s, Location: %s\n %s", 
-                 collection.restaurants.get(i).getName(), collection.restaurants.get(i).getAddress(),
+         String f = String.format("Name: %s (%s), Location: %s\n Review: %s", 
+                 collection.restaurants.get(i).getName(), 
+                 collection.restaurants.get(i).getRating(), 
+                 collection.restaurants.get(i).getAddress(),
                  collection.restaurants.get(i).getReview());
-                 jTextArea1.append(f);
+                 jTextArea1.append(f);              
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    
     /**
      * @param args the command line arguments
      */
@@ -245,10 +270,12 @@ public class Reviewer extends javax.swing.JFrame{
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Reviewer().setVisible(true);
+                new Reviewer().setVisible(true); 
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -259,11 +286,13 @@ public class Reviewer extends javax.swing.JFrame{
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSlider jSlider1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField3;
