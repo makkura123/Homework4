@@ -24,7 +24,7 @@ public class ReviewCollection {
     public int size(){
        return restaurants.size();
     }
-    
+    //PT -- where do you load the file? -5
     public void saveFile(Restaurants r){
         try {
             File f = new File("C:\\Users\\Neele\\Documents\\GitHub\\Homework4\\restaurants.txt");
