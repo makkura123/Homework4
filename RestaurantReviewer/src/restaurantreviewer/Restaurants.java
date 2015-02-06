@@ -14,7 +14,7 @@ public class Restaurants extends ReviewCollection {
     private int _rating;
     
     public Restaurants(){};
-    
+    //PT -- javadoc? -4
     public void setName(String name){
         _name = name;
     }
@@ -38,7 +38,7 @@ public class Restaurants extends ReviewCollection {
     public String getReview(){
         return _review;
     }
-    
+    //PT -- is there a min or max to a rating? If it's 1-5 stars, then that should be enforced here
     public void setRating(int rating){
         _rating = rating;
     }
